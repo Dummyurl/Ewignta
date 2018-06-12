@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Domestic Logistic</string>
+    <string name="app_name">Ewingta Logistics</string>
     <string name="home">Home</string>
     <string name="orders">Orders</string>
     <string name="profile">Profile</string>
@@ -34,12 +34,12 @@
     <string name="address">Address</string>
     <string name="share">Share</string>
     <string name="logout">Logout</string>
-    <string name="logout_warning">Logout from Domestic Logistics</string>
+    <string name="logout_warning">Logout from Ewingta Logistics</string>
     <string name="yes">Yes</string>
     <string name="cancel">Cancel</string>
     <string name="no_orders_available">No orders available</string>
     <string name="start">Start</string>
-    <string name="google_maps_key">AIzaSyCERwYmaDWrs7F9dlUejMYc3hV6LF7p7tw</string>
+    <string name="google_maps_key">AIzaSyBZrP_lBwW-UMJX1AWpj3WJbUe2oTPYBQ0</string>
     <string name="storage_location">This app require to access your location to know your address.</string>
     <string name="update_address">Update Address</string>
     <string name="add_address">Add Address</string>
@@ -61,7 +61,7 @@
     <string name="delivery_type">Delivery Type</string>
     <string name="select_time">Select Time</string>
     <string name="ok">OK</string>
-    <string name="press_again_warn">Press again to exit Domestics Logistics</string>
+    <string name="press_again_warn">Press again to exit Domestics Ewingta</string>
     <string name="select_city">Select City</string>
     <string name="select_area">Select Area</string>
     <string name="no_address_found">No address found</string>
@@ -95,7 +95,16 @@
     <string name="i_agree_to_the_insurance_terms">I agree to the insurance terms</string>
     <string name="confirm">Confirm</string>
     <string name="enter_otp">Enter OTP</string>
-    <string name="invite_text">Domestic Logistics is designed to bring a revolution in the Delivery Industry. At Domestic Logistics, we aim to provide the fastest Intra-city delivery with affordable prices https://play.google.com/store/apps/details?id=ewingta.domesticlogistic</string>
+    <string name="invite_text">Ewingta Logistics is designed to bring a revolution in the Delivery Industry. At Ewingta Logistics, we aim to provide the fastest Intra-city delivery with affordable prices https://play.google.com/store/apps/details?id=ewingta.domesticlogistic</string>
     <string name="invite_friends">Invite Friends</string>
+    <string name="order_details">Order Details</string>
+    <string name="order_type">Order Type</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="customer_number">Customer Number</string>
+    <string name="pick_up">Pickup</string>
+    <string name="delivery">Delivery</string>
+    <string name="order_size">Order Size</string>
+    <string name="completed">Completed</string>
+    <string name="direction_not_found">Direction not found!</string>
 
 </resources>

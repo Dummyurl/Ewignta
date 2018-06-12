@@ -9,6 +9,7 @@ import android.widget.TextView;
 import ewingta.domesticlogistic.R;
 import ewingta.domesticlogistic.models.Address;
 
+
 public class AddressAdapter extends CommonRecyclerAdapter<Address> {
     @Override
     public RecyclerView.ViewHolder onCreateBasicItemViewHolder(ViewGroup parent, int viewType) {

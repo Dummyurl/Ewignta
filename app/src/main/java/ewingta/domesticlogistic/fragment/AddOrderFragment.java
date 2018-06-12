@@ -21,7 +21,6 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ewingta.domesticlogistic.MainActivity;
@@ -38,7 +37,6 @@ import ewingta.domesticlogistic.models.AreaResponse;
 import ewingta.domesticlogistic.models.Category;
 import ewingta.domesticlogistic.models.CategoryResponse;
 import ewingta.domesticlogistic.models.City;
-import ewingta.domesticlogistic.models.CityResponse;
 import ewingta.domesticlogistic.models.LoginResponse;
 import ewingta.domesticlogistic.models.RegisterResponse;
 import ewingta.domesticlogistic.models.Service;
@@ -58,7 +56,7 @@ public class AddOrderFragment extends BaseFragment implements View.OnClickListen
     private RetrofitService service;
     private TextView tv_date_time;
     private RelativeLayout rl_progress;
-    private Spinner spinner_delivery_item, spinner_delivery_type, spinner_city, spinner_area;
+    private Spinner spinner_delivery_item, spinner_delivery_type, spinner_area;
     private List<Time> times;
     private Address pickupAddress, dropAddress;
     private TextView tv_pickup_location, tv_drop_location;
@@ -90,7 +88,6 @@ public class AddOrderFragment extends BaseFragment implements View.OnClickListen
 
                 spinner_delivery_item = view.findViewById(R.id.spinner_delivery_item);
                 spinner_delivery_type = view.findViewById(R.id.spinner_delivery_type);
-                spinner_city = view.findViewById(R.id.spinner_city);
                 spinner_area = view.findViewById(R.id.spinner_area);
 
                 btn_submit = view.findViewById(R.id.btn_submit);
@@ -143,15 +140,17 @@ public class AddOrderFragment extends BaseFragment implements View.OnClickListen
                     }
                 });
 
-                service.getCities().enqueue(new Callback<CityResponse>() {
+                City city = PreferenceUtil.getCity(getContext());
+
+                service.getAreas(city.getId()).enqueue(new Callback<AreaResponse>() {
                     @Override
-                    public void onResponse(Call<CityResponse> call, Response<CityResponse> response) {
+                    public void onResponse(Call<AreaResponse> call, Response<AreaResponse> response) {
                         if (response.isSuccessful() && response.body() != null) {
-                            CityResponse sr = response.body();
+                            AreaResponse sr = response.body();
 
                             if (sr.getStatus().equals("ok")) {
-                                CityAdapter cityAdapter = new CityAdapter(getContext(), sr.getCities());
-                                spinner_city.setAdapter(cityAdapter);
+                                AreaAdapter cityAdapter = new AreaAdapter(getContext(), sr.getLocations());
+                                spinner_area.setAdapter(cityAdapter);
                             }
                         }
 
@@ -159,50 +158,11 @@ public class AddOrderFragment extends BaseFragment implements View.OnClickListen
                     }
 
                     @Override
-                    public void onFailure(Call<CityResponse> call, Throwable t) {
+                    public void onFailure(Call<AreaResponse> call, Throwable t) {
                         rl_progress.setVisibility(View.GONE);
                         showErrorToast(R.string.error_message);
                     }
                 });
-
-                spinner_city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        if (position > 0) {
-                            City city = (City) spinner_city.getSelectedItem();
-
-                            service.getAreas(city.getId()).enqueue(new Callback<AreaResponse>() {
-                                @Override
-                                public void onResponse(Call<AreaResponse> call, Response<AreaResponse> response) {
-                                    if (response.isSuccessful() && response.body() != null) {
-                                        AreaResponse sr = response.body();
-
-                                        if (sr.getStatus().equals("ok")) {
-                                            AreaAdapter cityAdapter = new AreaAdapter(getContext(), sr.getLocations());
-                                            spinner_area.setAdapter(cityAdapter);
-                                        }
-                                    }
-
-                                    rl_progress.setVisibility(View.GONE);
-                                }
-
-                                @Override
-                                public void onFailure(Call<AreaResponse> call, Throwable t) {
-                                    rl_progress.setVisibility(View.GONE);
-                                    showErrorToast(R.string.error_message);
-                                }
-                            });
-                        }
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
-
-                AreaAdapter cityAdapter = new AreaAdapter(getContext(), new ArrayList<Area>());
-                spinner_area.setAdapter(cityAdapter);
 
                 if (times == null) {
                     service.getTimes().enqueue(new Callback<TimeResponse>() {
@@ -255,7 +215,6 @@ public class AddOrderFragment extends BaseFragment implements View.OnClickListen
             case R.id.btn_submit:
                 Object deliveryItem = null;
                 Object deliveryType = null;
-                Object deliveryCity = null;
                 Object deliveryArea = null;
 
                 if (spinner_delivery_item.getSelectedItemPosition() > 0) {
@@ -264,10 +223,6 @@ public class AddOrderFragment extends BaseFragment implements View.OnClickListen
 
                 if (spinner_delivery_type.getSelectedItemPosition() > 0) {
                     deliveryType = spinner_delivery_type.getSelectedItem();
-                }
-
-                if (spinner_city.getSelectedItemPosition() > 0) {
-                    deliveryCity = spinner_city.getSelectedItem();
                 }
 
                 if (spinner_area.getSelectedItemPosition() > 0) {
@@ -284,8 +239,6 @@ public class AddOrderFragment extends BaseFragment implements View.OnClickListen
                     showErrorToast(R.string.select_what_do_you_want_to_deliver);
                 } else if (deliveryType == null) {
                     showErrorToast(R.string.select_delivery_type);
-                } else if (deliveryCity == null) {
-                    showErrorToast(R.string.select_delivery_city);
                 } else if (deliveryArea == null) {
                     showErrorToast(R.string.select_delivery_area);
                 } else if (date == null || time == null) {
@@ -306,7 +259,7 @@ public class AddOrderFragment extends BaseFragment implements View.OnClickListen
                     LoginResponse lr = PreferenceUtil.getUserDetails(getContext());
                     final Service deliveryService = (Service) deliveryItem;
                     Category type = (Category) deliveryType;
-                    City city = (City) deliveryCity;
+                    City city = PreferenceUtil.getCity(getContext());
                     Area area = (Area) deliveryArea;
 
                     progress_submit.setVisibility(View.VISIBLE);
@@ -333,7 +286,6 @@ public class AddOrderFragment extends BaseFragment implements View.OnClickListen
 
                                     spinner_delivery_item.setSelection(0);
                                     spinner_delivery_type.setSelection(0);
-                                    spinner_city.setSelection(0);
                                     spinner_area.setSelection(0);
                                     tv_date_time.setText("");
 
