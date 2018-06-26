@@ -3,6 +3,7 @@ package ewingta.domesticlogistic;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -233,6 +234,18 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                return true;
+            case R.id.action_facebook:
+                Intent facebookIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com"));
+                startActivity(facebookIntent);
+                return true;
+            case R.id.action_twitter:
+                Intent twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.twitter.com"));
+                startActivity(twitterIntent);
+                return true;
+            case R.id.action_instagram:
+                Intent instagramIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.instagram.com"));
+                startActivity(instagramIntent);
                 return true;
             case R.id.action_contact_us:
                 return true;

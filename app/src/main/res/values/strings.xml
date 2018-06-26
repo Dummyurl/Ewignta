@@ -107,5 +107,8 @@
     <string name="completed">Completed</string>
     <string name="direction_not_found">Direction not found!</string>
     <string name="search">Search...</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="instagram">Instagram</string>
 
 </resources>

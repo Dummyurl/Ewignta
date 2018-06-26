@@ -38,6 +38,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin8dp"
                 android:layout_marginRight="@dimen/margin8dp"
+                android:layout_marginTop="@dimen/margin16dp"
+                android:background="@drawable/ic_rectangle_white">
+
+                <Spinner
+                    android:id="@+id/spinner_delivery_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin8dp"
+                android:layout_marginRight="@dimen/margin8dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/ic_rectangle_white">
 
@@ -46,21 +60,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin8dp"
-                android:layout_marginRight="@dimen/margin8dp"
-                android:layout_marginTop="@dimen/margin16dp"
-                android:background="@drawable/ic_rectangle_white">
-
-                <Spinner
-                    android:id="@+id/spinner_delivery_type"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
             </RelativeLayout>
 
             <RelativeLayout
