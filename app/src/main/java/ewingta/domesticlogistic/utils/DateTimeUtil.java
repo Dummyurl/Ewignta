@@ -92,7 +92,13 @@ public class DateTimeUtil {
                         }
                     }, year, month, day);
 
+            Calendar addCalendar = Calendar.getInstance();
+            addCalendar.setTime(new Date());
+            addCalendar.add(Calendar.DATE, 8);
+
             datePickerDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+            datePickerDialog.getDatePicker().setMaxDate(addCalendar.getTimeInMillis());
             datePickerDialog.show();
         } catch (Exception e) {
             CrashUtil.report(e);
