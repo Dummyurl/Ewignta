@@ -39,7 +39,7 @@
     <string name="cancel">Cancel</string>
     <string name="no_orders_available">No orders available</string>
     <string name="start">Start</string>
-    <string name="google_maps_key">AIzaSyBZrP_lBwW-UMJX1AWpj3WJbUe2oTPYBQ0</string>
+    <string name="google_maps_key">AIzaSyBvdlzVXsfuIDSoASRb3_usn4nXcRvlZMk</string>
     <string name="storage_location">This app require to access your location to know your address.</string>
     <string name="update_address">Update Address</string>
     <string name="add_address">Add Address</string>
@@ -106,5 +106,6 @@
     <string name="order_size">Order Size</string>
     <string name="completed">Completed</string>
     <string name="direction_not_found">Direction not found!</string>
+    <string name="search">Search...</string>
 
 </resources>
