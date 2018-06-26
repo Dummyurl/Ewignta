@@ -110,5 +110,9 @@
     <string name="facebook">Facebook</string>
     <string name="twitter">Twitter</string>
     <string name="instagram">Instagram</string>
+    <string name="enter_phone_number">Enter phone number</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_new_password">Enter new password</string>
+    <string name="reset_password">Reset Password</string>
 
 </resources>

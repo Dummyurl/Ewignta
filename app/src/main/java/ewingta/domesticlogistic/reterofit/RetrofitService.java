@@ -11,6 +11,7 @@ import ewingta.domesticlogistic.models.MyAddressResponse;
 import ewingta.domesticlogistic.models.OrderResponse;
 import ewingta.domesticlogistic.models.PriceResponse;
 import ewingta.domesticlogistic.models.RegisterResponse;
+import ewingta.domesticlogistic.models.RequestResponse;
 import ewingta.domesticlogistic.models.ServiceResponse;
 import ewingta.domesticlogistic.models.TimeResponse;
 import ewingta.domesticlogistic.utils.URLsUtil;
@@ -77,4 +78,10 @@ public interface RetrofitService {
 
     @GET(URLsUtil.PRICE_URL)
     Call<PriceResponse> getPrice(@Query("ordernumber") String ordernumber);
+
+    @GET(URLsUtil.FORGOT_PASSWORD)
+    Call<RequestResponse> forgotPassword(@Query("email") String email);
+
+    @GET(URLsUtil.RESET_PASSWORD)
+    Call<RequestResponse> resetPassword(@Query("email") String email, @Query("password") String password, @Query("otp") String otp);
 }
