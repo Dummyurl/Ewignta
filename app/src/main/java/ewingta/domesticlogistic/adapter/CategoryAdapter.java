@@ -21,8 +21,8 @@ public class CategoryAdapter extends BaseAdapter {
 
     public CategoryAdapter(Context context, List<Category> categories) {
         Category category = new Category();
-        category.setCat_name(context.getString(R.string.delivery_type));
-        category.setPublished(context.getString(R.string.delivery_type));
+        category.setCat_name(context.getString(R.string.what_do_you_want_to_deliver));
+        category.setPublished(context.getString(R.string.what_do_you_want_to_deliver));
         category.setId(0);
 
         this.categories = new ArrayList<>();
