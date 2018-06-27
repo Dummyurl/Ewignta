@@ -31,6 +31,7 @@ import ewingta.domesticlogistic.fragment.AddAddressFragment;
 import ewingta.domesticlogistic.fragment.AddOrderFragment;
 import ewingta.domesticlogistic.fragment.AddressesFragment;
 import ewingta.domesticlogistic.fragment.ConfirmOrderFragment;
+import ewingta.domesticlogistic.fragment.ContactUsFragment;
 import ewingta.domesticlogistic.fragment.EditProfileFragment;
 import ewingta.domesticlogistic.fragment.OrdersFragment;
 import ewingta.domesticlogistic.models.City;
@@ -252,8 +253,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 startActivity(instagramIntent);
                 return true;
             case R.id.action_contact_us:
-                Intent contactIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://ewingtalogistics.com/index.php/component/content/article?layout=edit&id=6"));
-                startActivity(contactIntent);
+
+                Fragment fm_address = new ContactUsFragment();
+                fT.add(R.id.frame_layout, fm_address, ContactUsFragment.class.getSimpleName())
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit();
                 return true;
             case R.id.action_logout:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this)
@@ -287,43 +291,19 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private void showAddressListFragment(FragmentManager fM) {
         FragmentTransaction fT = fM.beginTransaction();
 
-        if (fM.findFragmentByTag(AddressesFragment.class.getSimpleName()) == null) {
-            Fragment fm_address = new AddressesFragment();
-            fT.add(R.id.frame_layout, fm_address, AddressesFragment.class.getSimpleName())
-                    .addToBackStack(AddressesFragment.class.getSimpleName())
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .commit();
-        } else {
-            Fragment addressFragment = fM.findFragmentByTag(AddressesFragment.class.getSimpleName());
-
-            if (addressFragment != null && addressFragment instanceof AddressesFragment) {
-                fT.replace(R.id.frame_layout, addressFragment, AddressesFragment.class.getSimpleName())
-                        .addToBackStack(AddressesFragment.class.getSimpleName())
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit();
-            }
-        }
+        Fragment fm_address = new AddressesFragment();
+        fT.add(R.id.frame_layout, fm_address, AddressesFragment.class.getSimpleName())
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit();
     }
 
     private void showAddressFragment(FragmentManager fM) {
         FragmentTransaction fT = fM.beginTransaction();
 
-        if (fM.findFragmentByTag(AddAddressFragment.class.getSimpleName()) == null) {
-            Fragment fm_address = new AddAddressFragment();
-            fT.add(R.id.frame_layout, fm_address, AddAddressFragment.class.getSimpleName())
-                    .addToBackStack(AddAddressFragment.class.getSimpleName())
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .commit();
-        } else {
-            Fragment addressFragment = fM.findFragmentByTag(AddAddressFragment.class.getSimpleName());
-
-            if (addressFragment != null && addressFragment instanceof AddAddressFragment) {
-                fT.replace(R.id.frame_layout, addressFragment, AddAddressFragment.class.getSimpleName())
-                        .addToBackStack(AddAddressFragment.class.getSimpleName())
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit();
-            }
-        }
+        Fragment fm_address = new AddAddressFragment();
+        fT.add(R.id.frame_layout, fm_address, AddAddressFragment.class.getSimpleName())
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit();
     }
 
     @AfterPermissionGranted(RC_LOCATION)

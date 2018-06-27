@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:padding="@dimen/margin16dp">
+
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_support_large"
+        android:layout_margin="@dimen/margin24dp"
+        android:layout_above="@+id/tv_phone_number"
+        android:layout_centerHorizontal="true"
+        android:tint="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/tv_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:drawableLeft="@drawable/ic_phone_white"
+        android:drawablePadding="@dimen/margin16dp"
+        android:drawableStart="@drawable/ic_phone_white"
+        android:gravity="center_vertical"
+        android:text="@string/phone_number"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_phone_number"
+        android:layout_gravity="center_vertical"
+        android:drawableLeft="@drawable/ic_email_white"
+        android:drawablePadding="@dimen/margin16dp"
+        android:drawableStart="@drawable/ic_email_white"
+        android:gravity="center_vertical"
+        android:text="@string/email_address"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+</RelativeLayout>
