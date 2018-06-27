@@ -11,6 +11,7 @@ import ewingta.domesticlogistic.models.Address;
 
 
 public class AddressAdapter extends CommonRecyclerAdapter<Address> {
+    
     @Override
     public RecyclerView.ViewHolder onCreateBasicItemViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())

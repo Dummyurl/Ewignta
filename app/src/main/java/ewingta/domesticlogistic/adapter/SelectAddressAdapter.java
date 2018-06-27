@@ -8,12 +8,14 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import ewingta.domesticlogistic.R;
+import ewingta.domesticlogistic.fragment.AddressesFragment;
 import ewingta.domesticlogistic.models.Address;
 
 public class SelectAddressAdapter extends CommonRecyclerAdapter<Address> {
 
     private Address selectedAddress;
     private RadioButton rb__selected_checked;
+    private AddressesFragment addressesFragment;
 
     public SelectAddressAdapter(Address selectedAddress) {
         this.selectedAddress = selectedAddress;
