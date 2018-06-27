@@ -29,6 +29,7 @@ import ewingta.domesticlogistic.activities.CityActivity;
 import ewingta.domesticlogistic.activities.LoginActivity;
 import ewingta.domesticlogistic.fragment.AddAddressFragment;
 import ewingta.domesticlogistic.fragment.AddOrderFragment;
+import ewingta.domesticlogistic.fragment.AddressesFragment;
 import ewingta.domesticlogistic.fragment.ConfirmOrderFragment;
 import ewingta.domesticlogistic.fragment.EditProfileFragment;
 import ewingta.domesticlogistic.fragment.OrdersFragment;
@@ -222,7 +223,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                     }
                 }, 1000);
 
-                showAddressFragment(fM);
+                showAddressListFragment(fM);
                 return true;
             case R.id.action_share:
                 try {
@@ -276,6 +277,27 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 return true;
         }
         return false;
+    }
+
+    private void showAddressListFragment(FragmentManager fM) {
+        FragmentTransaction fT = fM.beginTransaction();
+
+        if (fM.findFragmentByTag(AddressesFragment.class.getSimpleName()) == null) {
+            Fragment fm_address = new AddressesFragment();
+            fT.add(R.id.frame_layout, fm_address, AddressesFragment.class.getSimpleName())
+                    .addToBackStack(AddressesFragment.class.getSimpleName())
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .commit();
+        } else {
+            Fragment addressFragment = fM.findFragmentByTag(AddressesFragment.class.getSimpleName());
+
+            if (addressFragment != null && addressFragment instanceof AddressesFragment) {
+                fT.replace(R.id.frame_layout, addressFragment, AddressesFragment.class.getSimpleName())
+                        .addToBackStack(AddressesFragment.class.getSimpleName())
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit();
+            }
+        }
     }
 
     private void showAddressFragment(FragmentManager fM) {
