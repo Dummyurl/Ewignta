@@ -42,7 +42,7 @@
     <string name="google_maps_key">AIzaSyBvdlzVXsfuIDSoASRb3_usn4nXcRvlZMk</string>
     <string name="storage_location">This app require to access your location to know your address.</string>
     <string name="update_address">Update Address</string>
-    <string name="add_address">Add Address</string>
+    <string name="add_address">Save</string>
     <string name="short_name">Short Name</string>
     <string name="gps_not_supported">GPS not supported</string>
     <string name="gps_not_enabled">GPS not enabled</string>

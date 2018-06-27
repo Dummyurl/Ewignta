@@ -21,9 +21,9 @@ public class ServiceAdapter extends BaseAdapter {
 
     public ServiceAdapter(Context context, List<Service> services) {
         Service service = new Service();
-        service.setService_name(context.getString(R.string.what_do_you_want_to_deliver));
-        service.setPublished(context.getString(R.string.what_do_you_want_to_deliver));
-        service.setService_key(context.getString(R.string.what_do_you_want_to_deliver));
+        service.setService_name(context.getString(R.string.delivery_type));
+        service.setPublished(context.getString(R.string.delivery_type));
+        service.setService_key(context.getString(R.string.delivery_type));
         service.setId(0);
 
         this.services = new ArrayList<>();
