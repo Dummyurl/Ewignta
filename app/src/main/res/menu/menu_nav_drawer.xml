@@ -38,6 +38,10 @@
         android:id="@+id/action_logout"
         android:icon="@drawable/ic_logout"
         android:title="@string/logout" />
+    <item
+        android:id="@+id/action_googleplus"
+        android:icon="@drawable/ic_googleplus"
+        android:title="@string/instagram" />
 
     <item
         android:id="@+id/action_facebook"

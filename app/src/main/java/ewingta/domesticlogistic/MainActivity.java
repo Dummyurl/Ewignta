@@ -238,16 +238,21 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             case R.id.action_facebook:
                 Intent facebookIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com"));
                 startActivity(facebookIntent);
+            case R.id.action_googleplus:
+                Intent googleplusIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com"));
+                startActivity(googleplusIntent);
                 return true;
             case R.id.action_twitter:
-                Intent twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.twitter.com"));
+                Intent twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/ewingtalogistic"));
                 startActivity(twitterIntent);
                 return true;
             case R.id.action_instagram:
-                Intent instagramIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.instagram.com"));
+                Intent instagramIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/ewingtalogistics"));
                 startActivity(instagramIntent);
                 return true;
             case R.id.action_contact_us:
+                Intent contactIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://ewingtalogistics.com/index.php/component/content/article?layout=edit&id=6"));
+                startActivity(contactIntent);
                 return true;
             case R.id.action_logout:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this)
