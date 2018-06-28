@@ -121,5 +121,7 @@
     <string name="google">Google+</string>
     <string name="value">Value</string>
     <string name="dimensions">Dimension</string>
+    <string name="save">Save</string>
+    <string name="Continue">Continue</string>
 
 </resources>

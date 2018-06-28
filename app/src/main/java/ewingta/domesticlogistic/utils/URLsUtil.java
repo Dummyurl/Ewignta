@@ -11,7 +11,7 @@ public class URLsUtil {
 
     public static final String REGISTER_URL = INDEX_POST_URL + "&resource=register";
 
-    public static final String OTP_URL = INDEX_GET_URL + "&resource=otpactivation";
+    public static final String OTP_URL = INDEX_GET_URL + "&resource=otpactivation&usertype=U";
 
     public static final String ORDERS_URL = INDEX_GET_URL + "&resource=orderlist";
 

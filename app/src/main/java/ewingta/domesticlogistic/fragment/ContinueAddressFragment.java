@@ -103,7 +103,7 @@ public class ContinueAddressFragment extends BaseFragment implements OnMapReadyC
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_continue_address, container, false);
+        return inflater.inflate(R.layout.fragment_add_address, container, false);
     }
 
     @Override
@@ -119,7 +119,7 @@ public class ContinueAddressFragment extends BaseFragment implements OnMapReadyC
             et_short_name = view.findViewById(R.id.et_short_name);
             et_address = view.findViewById(R.id.et_address);
 
-            view.findViewById(R.id.tv_address).setOnClickListener(new View.OnClickListener() {
+            view.findViewById(R.id.tv_continue).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     String shortName = et_short_name.getText().toString().trim();
