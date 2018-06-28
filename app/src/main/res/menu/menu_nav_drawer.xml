@@ -41,7 +41,7 @@
     <item
         android:id="@+id/action_googleplus"
         android:icon="@drawable/ic_googleplus"
-        android:title="@string/instagram" />
+        android:title="@string/google" />
 
     <item
         android:id="@+id/action_facebook"

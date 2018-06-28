@@ -238,7 +238,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 }
                 return true;
             case R.id.action_facebook:
-                Intent facebookIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com"));
+                Intent facebookIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/u/0/101602611575617732894"));
                 startActivity(facebookIntent);
             case R.id.action_googleplus:
                 Intent googleplusIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com"));
