@@ -116,6 +116,8 @@
     <string name="reset_password">Reset Password</string>
     <string name="phone_number">9704770701</string>
     <string name="email_address">info@ewingtalogistics.com</string>
+    <string name="_continue">Continue</string>
+    <string name="loading">Loading...</string>
     <string name="google">Google+</string>
     <string name="value">Value</string>
     <string name="dimensions">Dimension</string>

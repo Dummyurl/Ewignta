@@ -32,6 +32,7 @@ import ewingta.domesticlogistic.fragment.AddOrderFragment;
 import ewingta.domesticlogistic.fragment.AddressesFragment;
 import ewingta.domesticlogistic.fragment.ConfirmOrderFragment;
 import ewingta.domesticlogistic.fragment.ContactUsFragment;
+import ewingta.domesticlogistic.fragment.ContinueAddressFragment;
 import ewingta.domesticlogistic.fragment.EditProfileFragment;
 import ewingta.domesticlogistic.fragment.OrdersFragment;
 import ewingta.domesticlogistic.models.City;
@@ -292,7 +293,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         FragmentTransaction fT = fM.beginTransaction();
 
         Fragment fm_address = new AddressesFragment();
-        fT.add(R.id.frame_layout, fm_address, AddressesFragment.class.getSimpleName())
+        fT.add(R.id.frame_layout, fm_address)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit();
     }
@@ -301,7 +302,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         FragmentTransaction fT = fM.beginTransaction();
 
         Fragment fm_address = new AddAddressFragment();
-        fT.add(R.id.frame_layout, fm_address, AddAddressFragment.class.getSimpleName())
+        fT.add(R.id.frame_layout, fm_address)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit();
     }
@@ -314,6 +315,27 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             try {
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 showAddressFragment(fragmentManager);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            EasyPermissions.requestPermissions(this, getString(R.string.storage_location), RC_LOCATION, perms);
+        }
+    }
+
+    @AfterPermissionGranted(RC_LOCATION)
+    public void actionContinueAddress() {
+        String[] perms = {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
+
+        if (EasyPermissions.hasPermissions(this, perms)) {
+            try {
+                FragmentManager fM = getSupportFragmentManager();
+                FragmentTransaction fT = fM.beginTransaction();
+
+                Fragment fm_address = new AddAddressFragment();
+                fT.add(R.id.frame_layout, fm_address)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit();
             } catch (Exception e) {
                 e.printStackTrace();
             }
