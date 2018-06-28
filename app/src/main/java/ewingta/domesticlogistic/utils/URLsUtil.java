@@ -21,6 +21,10 @@ public class URLsUtil {
 
     public static final String SERVICES_URL = INDEX_GET_URL + "&resource=services";
 
+    public static final String VALUES_URL = INDEX_GET_URL + "&resource=values";
+
+    public static final String DIMENSIONS_URL = INDEX_GET_URL + "&resource=dimentions";
+
     public static final String CATEGORIES_URL = INDEX_GET_URL + "&resource=category";
 
     public static final String TIMES_URL = INDEX_GET_URL + "&resource=times";

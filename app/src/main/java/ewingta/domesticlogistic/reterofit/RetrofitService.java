@@ -6,6 +6,7 @@ import ewingta.domesticlogistic.models.AddressResponse;
 import ewingta.domesticlogistic.models.AreaResponse;
 import ewingta.domesticlogistic.models.CategoryResponse;
 import ewingta.domesticlogistic.models.CityResponse;
+import ewingta.domesticlogistic.models.DimensionResponse;
 import ewingta.domesticlogistic.models.LoginResponse;
 import ewingta.domesticlogistic.models.MyAddressResponse;
 import ewingta.domesticlogistic.models.OrderResponse;
@@ -14,6 +15,7 @@ import ewingta.domesticlogistic.models.RegisterResponse;
 import ewingta.domesticlogistic.models.RequestResponse;
 import ewingta.domesticlogistic.models.ServiceResponse;
 import ewingta.domesticlogistic.models.TimeResponse;
+import ewingta.domesticlogistic.models.ValueResponse;
 import ewingta.domesticlogistic.utils.URLsUtil;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -41,6 +43,12 @@ public interface RetrofitService {
 
     @GET(URLsUtil.SERVICES_URL)
     Call<ServiceResponse> getServices();
+
+    @GET(URLsUtil.VALUES_URL)
+    Call<ValueResponse> getValues();
+
+    @GET(URLsUtil.DIMENSIONS_URL)
+    Call<DimensionResponse> getDimensions();
 
     @GET(URLsUtil.CATEGORIES_URL)
     Call<CategoryResponse> getCategories();

@@ -10,11 +10,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import ewingta.domesticlogistic.MainActivity;
 import ewingta.domesticlogistic.R;
+import ewingta.domesticlogistic.adapter.DimensionAdapter;
+import ewingta.domesticlogistic.adapter.ServiceAdapter;
+import ewingta.domesticlogistic.adapter.ValueAdapter;
+import ewingta.domesticlogistic.models.DimensionResponse;
 import ewingta.domesticlogistic.models.PriceResponse;
+import ewingta.domesticlogistic.models.ServiceResponse;
+import ewingta.domesticlogistic.models.Value;
+import ewingta.domesticlogistic.models.ValueResponse;
 import ewingta.domesticlogistic.reterofit.RetrofitInstance;
 import ewingta.domesticlogistic.reterofit.RetrofitService;
 import retrofit2.Call;
@@ -28,6 +36,7 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
     private String orderId;
     private AppCompatButton btn_submit;
     private ProgressBar progress_submit;
+    private Spinner spinner_values, spinner_dimensions;
 
     public static ConfirmOrderFragment newInstance(String orderId) {
         ConfirmOrderFragment confirmOrderFragment = new ConfirmOrderFragment();
@@ -63,6 +72,8 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
             btn_submit = view.findViewById(R.id.btn_submit);
             btn_submit.setOnClickListener(this);
             progress_submit = view.findViewById(R.id.progress_submit);
+            spinner_values = view.findViewById(R.id.spinner_values);
+            spinner_dimensions = view.findViewById(R.id.spinner_dimensions);
 
             final TextView tv_price = view.findViewById(R.id.tv_price);
 
@@ -92,6 +103,49 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
                 }
             });
 
+            service.getValues().enqueue(new Callback<ValueResponse>() {
+                @Override
+                public void onResponse(Call<ValueResponse> call, Response<ValueResponse> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        ValueResponse vr = response.body();
+
+                        if (vr.getStatus().equals("ok")) {
+                            ValueAdapter valueAdapter = new ValueAdapter(getContext(), vr.getValueslist());
+                            spinner_values.setAdapter(valueAdapter);
+                        }
+                    }
+
+                    rl_progress.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onFailure(Call<ValueResponse> call, Throwable t) {
+                    rl_progress.setVisibility(View.GONE);
+                    showErrorToast(R.string.error_message);
+                }
+            });
+
+            service.getDimensions().enqueue(new Callback<DimensionResponse>() {
+                @Override
+                public void onResponse(Call<DimensionResponse> call, Response<DimensionResponse> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        DimensionResponse dimensionResponse = response.body();
+
+                        if (dimensionResponse.getStatus().equals("ok")) {
+                            DimensionAdapter dimensionAdapter = new DimensionAdapter(getContext(), dimensionResponse.getDimentionslist());
+                            spinner_dimensions.setAdapter(dimensionAdapter);
+                        }
+                    }
+
+                    rl_progress.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onFailure(Call<DimensionResponse> call, Throwable t) {
+                    rl_progress.setVisibility(View.GONE);
+                    showErrorToast(R.string.error_message);
+                }
+            });
         } catch (Exception e) {
             showErrorToast(R.string.error_message);
         }

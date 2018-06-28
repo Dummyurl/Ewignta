@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -59,6 +60,7 @@
             android:layout_marginTop="@dimen/margin16dp"
             android:orientation="horizontal"
             android:weightSum="3">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -68,26 +70,29 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_values"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/ic_rectangle_white"
-                android:ellipsize="end"
-                android:gravity="center_vertical|start"
-                android:maxLines="1"
-                android:padding="@dimen/margin8dp"
-                android:textColor="@android:color/black" />
+                android:paddingBottom="@dimen/margin4dp"
+                android:paddingTop="@dimen/margin4dp">
 
+                <Spinner
+                    android:id="@+id/spinner_values"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin16dp"
             android:orientation="horizontal"
             android:weightSum="3">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -97,18 +102,19 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_dimensions"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/ic_rectangle_white"
-                android:ellipsize="end"
-                android:gravity="center_vertical|start"
-                android:maxLines="1"
-                android:padding="@dimen/margin8dp"
-                android:textColor="@android:color/black" />
+                android:paddingBottom="@dimen/margin4dp"
+                android:paddingTop="@dimen/margin4dp">
 
+                <Spinner
+                    android:id="@+id/spinner_dimensions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -157,21 +163,23 @@
                 android:layout_centerInParent="true" />
         </RelativeLayout>
     </LinearLayout>
+
     <RelativeLayout
-                android:id="@+id/rl_progress"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:background="@android:color/black"
-        android:layout_alignParentLeft="true">
+        android:id="@+id/rl_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/black"
+        tools:visibility="gone">
 
-    <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
 
-</RelativeLayout>
+    </RelativeLayout>
 
 
 </RelativeLayout>
