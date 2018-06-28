@@ -1,18 +1,28 @@
 package ewingta.domesticlogistic.adapter;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import ewingta.domesticlogistic.R;
+import ewingta.domesticlogistic.activities.OrderActivity;
 import ewingta.domesticlogistic.models.Order;
 
 public class OrdersAdapter extends CommonRecyclerAdapter<Order> {
+    private Context context;
+
     @Override
     public RecyclerView.ViewHolder onCreateBasicItemViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
+        context = parent.getContext();
+
+        View itemView = LayoutInflater.from(context)
                 .inflate(R.layout.item_order, parent, false);
 
         return new OrderViewHolder(itemView);
@@ -51,7 +61,12 @@ public class OrdersAdapter extends CommonRecyclerAdapter<Order> {
 
         @Override
         public void onClick(View v) {
+            Order order = getItem(getAdapterPosition());
+            String value = new Gson().toJson(order);
 
+            Intent intent = new Intent(context, OrderActivity.class);
+            intent.putExtra(OrderActivity.ORDER, value);
+            context.startActivity(intent);
         }
     }
 }

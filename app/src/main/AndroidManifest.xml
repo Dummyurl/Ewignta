@@ -41,6 +41,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activities.OrderActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -53,6 +58,7 @@
         <activity
             android:name=".activities.CityActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <receiver
             android:name=".receivers.SmsReceiver"
             android:permission="android.permission.BROADCAST_SMS">
