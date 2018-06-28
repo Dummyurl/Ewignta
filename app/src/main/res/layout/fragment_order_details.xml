@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/black"
+    android:orientation="vertical"
+    android:padding="@dimen/margin16dp">
+
+    <TextView
+        android:id="@+id/tv_order_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:background="@drawable/ic_rectangle_white"
+        android:gravity="center_vertical|start"
+        android:hint="@string/order_type"
+        android:maxLines="1"
+        android:padding="@dimen/margin8dp"
+        android:textColor="@android:color/black" />
+
+
+    <TextView
+        android:id="@+id/tv_customer_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:background="@drawable/ic_rectangle_white"
+        android:gravity="center_vertical|start"
+        android:hint="@string/customer_name"
+        android:maxLines="1"
+        android:padding="@dimen/margin8dp"
+        android:textColor="@android:color/black" />
+
+
+    <TextView
+        android:id="@+id/tv_customer_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:background="@drawable/ic_rectangle_white"
+        android:gravity="center_vertical|start"
+        android:hint="@string/customer_number"
+        android:maxLines="1"
+        android:padding="@dimen/margin8dp"
+        android:textColor="@android:color/black" />
+
+
+    <TextView
+        android:id="@+id/tv_pick_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:layout_weight="1"
+        android:background="@drawable/ic_rectangle_white"
+        android:gravity="center_vertical|start"
+        android:hint="@string/pick_up"
+        android:maxLines="1"
+        android:padding="@dimen/margin8dp"
+        android:textColor="@android:color/black" />
+
+
+    <TextView
+        android:id="@+id/tv_delivery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:background="@drawable/ic_rectangle_white"
+        android:gravity="center_vertical|start"
+        android:hint="@string/delivery"
+        android:maxLines="1"
+        android:padding="@dimen/margin8dp"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tv_order_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:layout_weight="1"
+        android:background="@drawable/ic_rectangle_white"
+        android:gravity="center_vertical|start"
+        android:hint="@string/order_size"
+        android:maxLines="1"
+        android:padding="@dimen/margin8dp"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tv_completed"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/margin24dp"
+        android:background="@drawable/ic_rectangle"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingBottom="@dimen/margin8dp"
+        android:paddingLeft="@dimen/margin16dp"
+        android:paddingRight="@dimen/margin16dp"
+        android:paddingTop="@dimen/margin8dp"
+        android:text="@string/completed"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+</LinearLayout>
