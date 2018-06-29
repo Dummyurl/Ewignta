@@ -118,10 +118,12 @@
     <string name="email_address">info@ewingtalogistics.com</string>
     <string name="_continue">Continue</string>
     <string name="loading">Loading...</string>
-    <string name="google">Google+</string>
+    <string name="google">Google</string>
     <string name="value">Value</string>
     <string name="dimensions">Dimension</string>
     <string name="save">Save</string>
     <string name="Continue">Continue</string>
+    <string name="playservice_error">Update your playservices</string>
+    <string name="enter_valid_phone">Enter valid phone number</string>
 
 </resources>
