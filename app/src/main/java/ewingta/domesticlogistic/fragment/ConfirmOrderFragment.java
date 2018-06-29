@@ -18,11 +18,14 @@ import ewingta.domesticlogistic.R;
 import ewingta.domesticlogistic.adapter.DimensionAdapter;
 import ewingta.domesticlogistic.adapter.ServiceAdapter;
 import ewingta.domesticlogistic.adapter.ValueAdapter;
+import ewingta.domesticlogistic.adapter.WeightAdapter;
 import ewingta.domesticlogistic.models.DimensionResponse;
 import ewingta.domesticlogistic.models.PriceResponse;
 import ewingta.domesticlogistic.models.ServiceResponse;
 import ewingta.domesticlogistic.models.Value;
 import ewingta.domesticlogistic.models.ValueResponse;
+import ewingta.domesticlogistic.models.Weight;
+import ewingta.domesticlogistic.models.WeightResponse;
 import ewingta.domesticlogistic.reterofit.RetrofitInstance;
 import ewingta.domesticlogistic.reterofit.RetrofitService;
 import retrofit2.Call;
@@ -36,7 +39,7 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
     private String orderId;
     private AppCompatButton btn_submit;
     private ProgressBar progress_submit;
-    private Spinner spinner_values, spinner_dimensions;
+    private Spinner spinner_values, spinner_dimensions,spinner_weights;
 
     public static ConfirmOrderFragment newInstance(String orderId) {
         ConfirmOrderFragment confirmOrderFragment = new ConfirmOrderFragment();
@@ -74,6 +77,7 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
             progress_submit = view.findViewById(R.id.progress_submit);
             spinner_values = view.findViewById(R.id.spinner_values);
             spinner_dimensions = view.findViewById(R.id.spinner_dimensions);
+            spinner_weights = view.findViewById(R.id.spinner_weights);
 
             final TextView tv_price = view.findViewById(R.id.tv_price);
 
@@ -142,6 +146,27 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
 
                 @Override
                 public void onFailure(Call<DimensionResponse> call, Throwable t) {
+                    rl_progress.setVisibility(View.GONE);
+                    showErrorToast(R.string.error_message);
+                }
+            });
+            service.getWeights().enqueue(new Callback<WeightResponse>() {
+                @Override
+                public void onResponse(Call<WeightResponse> call, Response<WeightResponse> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        WeightResponse weightResponse = response.body();
+
+                        if (weightResponse.getStatus().equals("ok")) {
+                            WeightAdapter weightAdapter = new WeightAdapter(getContext(), weightResponse.getProductweightlist());
+                            spinner_weights.setAdapter(weightAdapter);
+                        }
+                    }
+
+                    rl_progress.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onFailure(Call<WeightResponse> call, Throwable t) {
                     rl_progress.setVisibility(View.GONE);
                     showErrorToast(R.string.error_message);
                 }

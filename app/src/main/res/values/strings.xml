@@ -125,5 +125,6 @@
     <string name="Continue">Continue</string>
     <string name="playservice_error">Update your playservices</string>
     <string name="enter_valid_phone">Enter valid phone number</string>
+    <string name="weight">Weight</string>
 
 </resources>

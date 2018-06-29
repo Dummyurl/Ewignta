@@ -3,7 +3,7 @@ package ewingta.domesticlogistic.models;
 public class Order {
     private String service_id;
     private String location;
-    private String customer_phone;
+    private String Drivermobilenumber;
     private String staff_id;
     private String state_name;
     private String order_price;
@@ -29,7 +29,7 @@ public class Order {
     private String status;
     private String country_id;
     private String customer_email;
-    private String customer_name;
+    private String Drivername;
     private String order_final_price;
     private String installation_date;
     private String location_id;
@@ -57,11 +57,11 @@ public class Order {
     }
 
     public String getCustomer_phone() {
-        return customer_phone;
+        return Drivermobilenumber;
     }
 
-    public void setCustomer_phone(String customer_phone) {
-        this.customer_phone = customer_phone;
+    public void Drivermobilenumber(String customer_phone) {
+        this.Drivermobilenumber = customer_phone;
     }
 
     public String getStaff_id() {
@@ -265,11 +265,11 @@ public class Order {
     }
 
     public String getCustomer_name() {
-        return customer_name;
+        return Drivername;
     }
 
     public void setCustomer_name(String customer_name) {
-        this.customer_name = customer_name;
+        this.Drivername = customer_name;
     }
 
     public String getOrder_final_price() {
@@ -349,7 +349,7 @@ public class Order {
         return "Order{" +
                 "service_id='" + service_id + '\'' +
                 ", location='" + location + '\'' +
-                ", customer_phone='" + customer_phone + '\'' +
+                ", customer_phone='" + Drivermobilenumber + '\'' +
                 ", staff_id='" + staff_id + '\'' +
                 ", state_name='" + state_name + '\'' +
                 ", order_price='" + order_price + '\'' +
@@ -375,7 +375,7 @@ public class Order {
                 ", status='" + status + '\'' +
                 ", country_id='" + country_id + '\'' +
                 ", customer_email='" + customer_email + '\'' +
-                ", customer_name='" + customer_name + '\'' +
+                ", customer_name='" + Drivername + '\'' +
                 ", order_final_price='" + order_final_price + '\'' +
                 ", installation_date='" + installation_date + '\'' +
                 ", location_id='" + location_id + '\'' +

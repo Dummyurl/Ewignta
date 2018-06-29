@@ -25,6 +25,8 @@ public class URLsUtil {
 
     public static final String DIMENSIONS_URL = INDEX_GET_URL + "&resource=dimentions";
 
+    public static final String WEIGHT_URL = INDEX_GET_URL + "&resource=weight";
+
     public static final String CATEGORIES_URL = INDEX_GET_URL + "&resource=category";
 
     public static final String TIMES_URL = INDEX_GET_URL + "&resource=times";
@@ -44,4 +46,7 @@ public class URLsUtil {
     public static final String FORGOT_PASSWORD = INDEX_GET_URL + "&resource=forgotpassword";
 
     public static final String RESET_PASSWORD = INDEX_GET_URL + "&resource=resetpassword";
+
+
 }
+

@@ -16,6 +16,8 @@ import ewingta.domesticlogistic.models.RequestResponse;
 import ewingta.domesticlogistic.models.ServiceResponse;
 import ewingta.domesticlogistic.models.TimeResponse;
 import ewingta.domesticlogistic.models.ValueResponse;
+import ewingta.domesticlogistic.models.Weight;
+import ewingta.domesticlogistic.models.WeightResponse;
 import ewingta.domesticlogistic.utils.URLsUtil;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -49,6 +51,9 @@ public interface RetrofitService {
 
     @GET(URLsUtil.DIMENSIONS_URL)
     Call<DimensionResponse> getDimensions();
+
+    @GET(URLsUtil.WEIGHT_URL)
+    Call<WeightResponse> getWeights();
 
     @GET(URLsUtil.CATEGORIES_URL)
     Call<CategoryResponse> getCategories();
