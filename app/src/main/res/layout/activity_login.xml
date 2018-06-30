@@ -128,7 +128,7 @@
                 android:id="@+id/btn_google_login"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/ic_rectangle_red"
+                android:background="@drawable/ic_rectangle_yellow"
                 android:text="@string/google"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
