@@ -97,4 +97,7 @@ public interface RetrofitService {
 
     @GET(URLsUtil.RESET_PASSWORD)
     Call<RequestResponse> resetPassword(@Query("email") String email, @Query("password") String password, @Query("otp") String otp);
+
+    @GET(URLsUtil.DELETE_ADDRESS)
+    Call<RequestResponse> deleteAddress(@Query("userid") String userid, @Query("addrid") String addrid);
 }

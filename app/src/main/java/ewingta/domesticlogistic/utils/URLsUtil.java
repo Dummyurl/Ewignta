@@ -47,6 +47,6 @@ public class URLsUtil {
 
     public static final String RESET_PASSWORD = INDEX_GET_URL + "&resource=resetpassword";
 
-
+    public static final String DELETE_ADDRESS = INDEX_GET_URL + "&resource=removeuseraddress";
 }
 
