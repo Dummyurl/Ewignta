@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import ewingta.domesticlogistic.R;
@@ -11,7 +12,7 @@ import ewingta.domesticlogistic.models.Address;
 
 
 public class AddressAdapter extends CommonRecyclerAdapter<Address> {
-    
+
     @Override
     public RecyclerView.ViewHolder onCreateBasicItemViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -29,11 +30,14 @@ public class AddressAdapter extends CommonRecyclerAdapter<Address> {
     private class AddressViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView tv_short_name, tv_address;
+        private ImageView iv_delete;
 
         private AddressViewHolder(View view) {
             super(view);
             tv_short_name = view.findViewById(R.id.tv_short_name);
             tv_address = view.findViewById(R.id.tv_address);
+            iv_delete = view.findViewById(R.id.iv_delete);
+            iv_delete.setOnClickListener(this);
         }
 
 

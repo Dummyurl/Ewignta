@@ -13,35 +13,58 @@
     android:paddingRight="@dimen/margin16dp"
     android:paddingTop="@dimen/margin8dp">
 
-    <TextView
-        android:id="@+id/tv_short_name"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margin8dp"
-        android:layout_marginRight="@dimen/margin8dp"
-        android:ellipsize="end"
-        android:fontFamily="sans-serif-condensed"
-        android:maxLines="1"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        tools:text="Nager" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_location_16dp"
-        android:drawablePadding="@dimen/margin4dp"
-        android:drawableStart="@drawable/ic_location_16dp"
-        android:ellipsize="end"
-        android:fontFamily="sans-serif-condensed"
-        android:maxLines="1"
-        android:paddingBottom="@dimen/margin4dp"
-        android:paddingTop="@dimen/margin4dp"
-        android:textColor="@color/grey"
-        android:textSize="16sp"
-        tools:text="Sample user " />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/iv_delete"
+            android:layout_toStartOf="@+id/iv_delete"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_short_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin8dp"
+                android:layout_marginRight="@dimen/margin8dp"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-condensed"
+                android:maxLines="1"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="Nager" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_location_16dp"
+                android:drawablePadding="@dimen/margin4dp"
+                android:drawableStart="@drawable/ic_location_16dp"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-condensed"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/margin4dp"
+                android:paddingTop="@dimen/margin4dp"
+                android:textColor="@color/grey"
+                android:textSize="16sp"
+                tools:text="Sample user " />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/margin8dp"
+            android:src="@drawable/ic_delete" />
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
