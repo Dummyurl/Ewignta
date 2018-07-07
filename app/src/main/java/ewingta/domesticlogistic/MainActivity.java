@@ -369,12 +369,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 break;
             case REQUEST_LOCATION:
 
-                Fragment fragment = getSupportFragmentManager().findFragmentByTag(AddAddressFragment.class.getSimpleName());
-
-                if (fragment != null && fragment instanceof AddAddressFragment) {
-                    AddAddressFragment addAddressFragment = (AddAddressFragment) fragment;
-                    addAddressFragment.enableLocationListener();
-                }
+               showAddressFragment(getSupportFragmentManager());
                 break;
             case CITY_CHANGE:
                 City city = PreferenceUtil.getCity(this);

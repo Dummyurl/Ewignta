@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +69,7 @@ public class AddAddressFragment extends BaseFragment implements OnMapReadyCallba
     private LocationManager locationManager;
     private Marker marker;
     private GoogleMap mGoogleMap;
+    private static View view;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -99,7 +101,17 @@ public class AddAddressFragment extends BaseFragment implements OnMapReadyCallba
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_add_address, container, false);
+        if (view != null) {
+            ViewGroup parent = (ViewGroup) view.getParent();
+            if (parent != null)
+                parent.removeView(view);
+        }
+        try {
+            view = inflater.inflate(R.layout.fragment_add_address, container, false);
+        } catch (InflateException e) {
+            /* map is already there, just return view as it is */
+        }
+        return view;
     }
 
     @Override
