@@ -35,6 +35,7 @@ import ewingta.domesticlogistic.fragment.ContactUsFragment;
 import ewingta.domesticlogistic.fragment.ContinueAddressFragment;
 import ewingta.domesticlogistic.fragment.EditProfileFragment;
 import ewingta.domesticlogistic.fragment.OrdersFragment;
+import ewingta.domesticlogistic.models.Address;
 import ewingta.domesticlogistic.models.City;
 import ewingta.domesticlogistic.models.LoginResponse;
 import ewingta.domesticlogistic.utils.BNUtil;
@@ -50,6 +51,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         EasyPermissions.PermissionCallbacks, BottomNavigationView.OnNavigationItemSelectedListener {
 
     private final static int RC_LOCATION = 1254;
+    private final static int RC_CONTINUE_LOCATION = 1255;
     private DrawerLayout drawer_layout;
     private boolean doubleBackToExit;
     private TextView tv_area;
@@ -321,22 +323,38 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         }
     }
 
-    @AfterPermissionGranted(RC_LOCATION)
-    public void actionContinueAddress() {
+    public void actionContinueAddress(final int type) {
         String[] perms = {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
 
         if (EasyPermissions.hasPermissions(this, perms)) {
-            try {
-                FragmentManager fM = getSupportFragmentManager();
-                FragmentTransaction fT = fM.beginTransaction();
+            FragmentManager fM = getSupportFragmentManager();
+            FragmentTransaction fT = fM.beginTransaction();
 
-                Fragment fm_address = new AddAddressFragment();
-                fT.add(R.id.frame_layout, fm_address)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            ContinueAddressFragment fm_address = new ContinueAddressFragment();
+            fm_address.setiSetOnAddressAdded(new ContinueAddressFragment.ISetOnAddressAdded() {
+                @Override
+                public void onAddressAdded(Address address) {
+                    FragmentManager fM = getSupportFragmentManager();
+                    Fragment fragment = fM.findFragmentByTag(AddOrderFragment.class.getSimpleName());
+                    AddOrderFragment addOrderFragment;
+
+                    if (fragment != null && fragment instanceof AddOrderFragment) {
+                        if (type == 0) {
+                            addOrderFragment = (AddOrderFragment) fragment;
+                            addOrderFragment.setDropAddress(address);
+                        } else {
+                            addOrderFragment = (AddOrderFragment) fragment;
+                            addOrderFragment.setPickupAddress(address);
+                        }
+
+                        fM.beginTransaction().add(R.id.frame_layout, addOrderFragment).commit();
+                    }
+                }
+            });
+
+            fT.replace(R.id.frame_layout, fm_address)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .commit();
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.storage_location), RC_LOCATION, perms);
         }
@@ -368,8 +386,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             case AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE:
                 break;
             case REQUEST_LOCATION:
-
-               showAddressFragment(getSupportFragmentManager());
+                showAddressFragment(getSupportFragmentManager());
                 break;
             case CITY_CHANGE:
                 City city = PreferenceUtil.getCity(this);

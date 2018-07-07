@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -66,6 +68,16 @@ public class AddOrderFragment extends BaseFragment implements View.OnClickListen
     private String date;
     private Time time;
     private View view;
+
+    public void setPickupAddress(Address pickupAddress) {
+        this.pickupAddress = pickupAddress;
+        tv_pickup_location.setText(pickupAddress.getShortname());
+    }
+
+    public void setDropAddress(Address dropAddress) {
+        this.dropAddress = dropAddress;
+        tv_drop_location.setText(dropAddress.getShortname());
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -334,12 +346,19 @@ public class AddOrderFragment extends BaseFragment implements View.OnClickListen
                 getDropLocation();
                 break;
             case R.id.iv_drop:
+                Activity activity1 = getActivity();
+
+                if (activity1 != null && !activity1.isFinishing()) {
+                    MainActivity mainActivity = (MainActivity) activity1;
+                    mainActivity.actionContinueAddress(0);
+                }
+                break;
             case R.id.iv_pickup:
                 Activity activity = getActivity();
 
                 if (activity != null && !activity.isFinishing()) {
                     MainActivity mainActivity = (MainActivity) activity;
-                    mainActivity.actionAddAddress();
+                    mainActivity.actionContinueAddress(1);
                 }
                 break;
         }

@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,9 +62,7 @@ import retrofit2.Response;
 
 import static android.content.Context.LOCATION_SERVICE;
 
-public class ContinueAddressFragment extends BaseFragment implements OnMapReadyCallback, EasyPermissions.PermissionCallbacks, LocationListener
-
-{
+public class ContinueAddressFragment extends BaseFragment implements OnMapReadyCallback, EasyPermissions.PermissionCallbacks, LocationListener {
     final public static int REQUEST_LOCATION = 1994;
     private SupportMapFragment mapFragment;
     private GoogleApiClient googleApiClient;
@@ -71,6 +70,16 @@ public class ContinueAddressFragment extends BaseFragment implements OnMapReadyC
     private LocationManager locationManager;
     private Marker marker;
     private GoogleMap mGoogleMap;
+    private ISetOnAddressAdded iSetOnAddressAdded;
+    private static View view;
+
+    public interface ISetOnAddressAdded {
+        void onAddressAdded(ewingta.domesticlogistic.models.Address address);
+    }
+
+    public void setiSetOnAddressAdded(ISetOnAddressAdded iSetOnAddressAdded) {
+        this.iSetOnAddressAdded = iSetOnAddressAdded;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -103,7 +112,17 @@ public class ContinueAddressFragment extends BaseFragment implements OnMapReadyC
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_add_address, container, false);
+        if (view != null) {
+            ViewGroup parent = (ViewGroup) view.getParent();
+            if (parent != null)
+                parent.removeView(view);
+        }
+        try {
+            view = inflater.inflate(R.layout.fragment_continue_address, container, false);
+        } catch (InflateException e) {
+            /* map is already there, just return view as it is */
+        }
+        return view;
     }
 
     @Override
@@ -119,7 +138,7 @@ public class ContinueAddressFragment extends BaseFragment implements OnMapReadyC
             et_short_name = view.findViewById(R.id.et_short_name);
             et_address = view.findViewById(R.id.et_address);
 
-            view.findViewById(R.id.tv_continue).setOnClickListener(new View.OnClickListener() {
+            view.findViewById(R.id.tv_address).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     String shortName = et_short_name.getText().toString().trim();
@@ -147,6 +166,7 @@ public class ContinueAddressFragment extends BaseFragment implements OnMapReadyC
                                         et_address.setText("");
                                         et_short_name.setText("");
                                         showSuccessToast(R.string.address_added);
+                                        iSetOnAddressAdded.onAddressAdded(ar.getAddressid().get(0));
                                     } else {
                                         showErrorToast(R.string.error_message);
                                     }
