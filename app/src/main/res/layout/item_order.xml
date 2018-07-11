@@ -83,20 +83,20 @@
             android:drawableStart="@drawable/ic_phone"
             android:ellipsize="end"
             android:fontFamily="sans-serif-condensed"
+            android:hint="Not Assigned"
             android:maxLines="1"
             android:paddingBottom="@dimen/margin4dp"
             android:paddingTop="@dimen/margin4dp"
             android:textColor="@color/grey"
             android:textSize="16sp"
-            android:hint="Not Assigned"
             tools:text="9035896170" />
 
         <TextView
             android:id="@+id/tv_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/ic_rectangle"
             android:ellipsize="end"
             android:fontFamily="sans-serif-condensed"
@@ -108,6 +108,25 @@
             android:text="@string/start"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/ic_rectangle"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-condensed"
+            android:maxLines="1"
+            android:paddingBottom="@dimen/margin4dp"
+            android:paddingLeft="@dimen/margin16dp"
+            android:paddingRight="@dimen/margin16dp"
+            android:paddingTop="@dimen/margin4dp"
+            android:text="@string/view_details"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_alignParentRight="true" />
     </RelativeLayout>
 
     <View

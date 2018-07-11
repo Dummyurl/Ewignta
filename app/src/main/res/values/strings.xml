@@ -101,8 +101,8 @@
     <string name="order_type">Order Type</string>
     <string name="customer_name">Customer Name</string>
     <string name="customer_number">Customer Number</string>
-    <string name="pick_up">Pickup</string>
-    <string name="delivery">Delivery</string>
+    <string name="pick_up">Pickup Add</string>
+    <string name="delivery">Delivery Add</string>
     <string name="order_size">Order Size</string>
     <string name="completed">Completed</string>
     <string name="direction_not_found">Direction not found!</string>
@@ -130,8 +130,11 @@
     <string name="driver_number">Driver Number</string>
     <string name="delivery_time">Delivery Time</string>
     <string name="status">Status</string>
-    <string name="track">Track</string>
+    <string name="track">Track Your Package</string>
     <string name="address_deleted_successfully">Address deleted successfully</string>
     <string name="delete_address">Delete Address?</string>
+    <string name="order_price">Price</string>
+    <string name="orderstatus">Status</string>
+    <string name="view_details">View Details</string>
 
 </resources>

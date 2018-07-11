@@ -36,7 +36,7 @@ public class OrdersAdapter extends CommonRecyclerAdapter<Order> {
 
     private class OrderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private TextView tv_order_id, tv_order_type, tv_customer_name, tv_customer_phone, tv_status;
+        private TextView tv_order_id, tv_order_type, tv_customer_name, tv_customer_phone, tv_status, tv_detail;
 
         private OrderViewHolder(View view) {
             super(view);
@@ -45,7 +45,8 @@ public class OrdersAdapter extends CommonRecyclerAdapter<Order> {
             tv_customer_name = view.findViewById(R.id.tv_customer_name);
             tv_customer_phone = view.findViewById(R.id.tv_customer_phone);
             tv_status = view.findViewById(R.id.tv_status);
-            tv_status.setOnClickListener(this);
+            tv_detail = view.findViewById(R.id.tv_detail);
+            tv_detail.setOnClickListener(this);
         }
 
 

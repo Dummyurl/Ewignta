@@ -45,13 +45,16 @@ public class OrderDetailsFragment extends BottomSheetDialogFragment {
         TextView tv_pick_up = contentView.findViewById(R.id.tv_pick_up);
         TextView tv_delivery = contentView.findViewById(R.id.tv_delivery);
         TextView tv_order_size = contentView.findViewById(R.id.tv_order_size);
+        TextView tv_order_status = contentView.findViewById(R.id.tv_order_status);
+
 
         tv_order_type.setText(order.getTime());
         tv_customer_name.setText(order.getCustomer_name());
         tv_customer_phone.setText(order.getCustomer_phone());
-        tv_pick_up.setText(order.getLocation_name());
-        tv_delivery.setText(order.getBranch_name());
+        tv_pick_up.setText(order.getLocation_id());
+        tv_delivery.setText(order.getCustomer_address());
         tv_order_size.setText(order.getCat_name());
+        tv_order_status.setText(order.getStatus());
 
         dialog.setContentView(contentView);
     }
