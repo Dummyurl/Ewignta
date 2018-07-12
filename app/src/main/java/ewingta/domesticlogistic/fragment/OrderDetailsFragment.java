@@ -2,10 +2,16 @@ package ewingta.domesticlogistic.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialogFragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -17,6 +23,7 @@ public class OrderDetailsFragment extends BottomSheetDialogFragment {
 
     private static final String ORDER_DETAILS = "ORDER_DETAILS";
     private Order order;
+    private Button btn_call;
 
     public static OrderDetailsFragment newInstance(String orderDetails) {
         OrderDetailsFragment fragment = new OrderDetailsFragment();
@@ -24,6 +31,7 @@ public class OrderDetailsFragment extends BottomSheetDialogFragment {
         bundle.putString(ORDER_DETAILS, orderDetails);
         fragment.setArguments(bundle);
         return fragment;
+
     }
 
     @Override
@@ -31,7 +39,9 @@ public class OrderDetailsFragment extends BottomSheetDialogFragment {
         super.onCreate(savedInstanceState);
         String orderValue = getArguments().getString(ORDER_DETAILS);
         order = new Gson().fromJson(orderValue, Order.class);
+
     }
+
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -49,6 +59,7 @@ public class OrderDetailsFragment extends BottomSheetDialogFragment {
         TextView tv_order_status = contentView.findViewById(R.id.tv_order_status);
 
 
+
         tv_order_type.setText(order.getTime());
         tv_customer_name.setText(order.getCustomer_name());
         tv_customer_phone.setText(order.getCustomer_phone());
@@ -59,6 +70,29 @@ public class OrderDetailsFragment extends BottomSheetDialogFragment {
         tv_order_status.setText(order.getStatus());
 
         dialog.setContentView(contentView);
+
+    }
+
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_order_details,
+                container, false);
+        btn_call = view.findViewById(R.id.btn_call);
+        btn_call.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + getString(R.string.driver_number)));
+                startActivity(intent);
+            }
+        });
+        return view;
     }
 }
 

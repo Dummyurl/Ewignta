@@ -3,44 +3,91 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black"
-    android:padding="@dimen/margin16dp">
+    android:padding="@dimen/margin16dp"
+    android:visibility="visible">
 
 
     <ImageView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:src="@drawable/ic_support_large"
-        android:layout_margin="@dimen/margin24dp"
-        android:layout_above="@+id/tv_phone_number"
+        android:layout_width="221dp"
+        android:layout_height="118dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:tint="@android:color/white"/>
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_support_large"
+        android:tint="@android:color/white" />
 
     <TextView
-        android:id="@+id/tv_phone_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_width="228dp"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_vertical"
-        android:drawableLeft="@drawable/ic_phone_white"
-        android:drawablePadding="@dimen/margin16dp"
-        android:drawableStart="@drawable/ic_phone_white"
-        android:gravity="center_vertical"
-        android:text="@string/phone_number"
+        android:layout_marginTop="207dp"
+        android:text="  Customer Support"
         android:textColor="@android:color/white"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="200dp"
+        android:layout_height="3dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorPrimary" />
+
+    <ImageButton
+        android:id="@+id/tv_phone_number"
+        android:layout_width="357dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="188dp"
+        android:background="@drawable/ic_rectangle_yellow"
+        android:drawablePadding="@dimen/margin16dp"
+
+        android:gravity="center_vertical"
+
+        android:padding="5dp"
+        android:src="@drawable/ic_call"
+        android:text="@string/phone_number" />
+
+    <TextView
+        android:layout_width="127dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="86dp"
+        android:padding="10dp"
+        android:text=" Email us"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="93dp"
+        android:layout_height="3dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="88dp"
+        android:background="@color/colorPrimary" />
+
 
     <TextView
         android:id="@+id/tv_email"
-        android:layout_width="wrap_content"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_phone_number"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_vertical"
-        android:drawableLeft="@drawable/ic_email_white"
+        android:layout_marginBottom="46dp"
+        android:background="@drawable/ic_rectangle_yellow"
         android:drawablePadding="@dimen/margin16dp"
-        android:drawableStart="@drawable/ic_email_white"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:text="@string/email_address"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="24sp" />
 
 </RelativeLayout>
