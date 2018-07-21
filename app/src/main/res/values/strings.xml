@@ -130,11 +130,12 @@
     <string name="driver_number">Driver Number</string>
     <string name="delivery_time">Delivery Time</string>
     <string name="status">Status</string>
-    <string name="track">Track Your Package</string>
+    <string name="track">Track Your Package---></string>
     <string name="address_deleted_successfully">Address deleted successfully</string>
     <string name="delete_address">Delete Address?</string>
     <string name="order_price">Price</string>
     <string name="orderstatus">Status</string>
     <string name="view_details">View Details</string>
+    <string name="call">CALL</string>
 
 </resources>

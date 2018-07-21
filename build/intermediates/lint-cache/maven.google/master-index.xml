@@ -23,7 +23,7 @@
   <com.android.tools.lint/>
   <com.android.tools.external.org-jetbrains/>
   <com.android.support.test.espresso.idling/>
-  <com.android.support.test.dimensions/>
+  <com.android.support.test.services/>
   <com.google.firebase/>
   <com.google.android.gms/>
   <com.google.gms/>
@@ -45,7 +45,7 @@
   <com.google.android.play/>
   <androidx.multidex/>
   <com.google.android.material/>
-  <androidx.test.dimensions/>
+  <androidx.test.services/>
   <androidx.test.janktesthelper/>
   <androidx.test/>
   <androidx.test.espresso/>
@@ -104,4 +104,5 @@
   <androidx.test.ext/>
   <com.google.android.ads.consent/>
   <androidx.versionedparcelable/>
+  <androidx.media2/>
 </metadata>

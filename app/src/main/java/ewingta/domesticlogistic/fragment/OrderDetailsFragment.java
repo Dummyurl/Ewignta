@@ -75,24 +75,5 @@ public class OrderDetailsFragment extends BottomSheetDialogFragment {
 
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_order_details,
-                container, false);
-        btn_call = view.findViewById(R.id.btn_call);
-        btn_call.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + getString(R.string.driver_number)));
-                startActivity(intent);
-            }
-        });
-        return view;
-    }
 }
 

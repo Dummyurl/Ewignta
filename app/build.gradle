@@ -5,7 +5,7 @@ def gitTag = 'git describe --abbrev=0 --tags'.execute([], project.rootDir).text.
 def gitCommitCount = Integer.parseInt('git rev-list --count HEAD'.execute([], project.rootDir).text.trim())
 
 ext {
-    appVersionName = '1.0'
+    appVersionName = '1.1'
     appPackageId = 'ewingta.domesticlogistic'
 }
 
