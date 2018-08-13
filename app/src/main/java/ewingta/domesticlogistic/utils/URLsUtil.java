@@ -41,7 +41,7 @@ public class URLsUtil {
 
     public static final String UPDATE_PASSWORD_URL = INDEX_GET_URL + "&resource=updateprofile";
 
-    public static final String PRICE_URL = INDEX_GET_URL + "&resource=getprice";
+    public static final String PRICE_URL = INDEX_GET_URL + "&resource=getprice&weight";
 
     public static final String FORGOT_PASSWORD = INDEX_GET_URL + "&resource=forgotpassword";
 

@@ -90,7 +90,7 @@
     <string name="no_price_available">NO prices available</string>
     <string name="select_price">Select price</string>
     <string name="confirm_order">Confirm Order</string>
-    <string name="price">Price</string>
+    <string name="price">Total Price</string>
     <string name="i_agree_to_the_terms_and_conditions">I agree to the terms and conditions</string>
     <string name="i_agree_to_the_insurance_terms">I agree to the insurance terms</string>
     <string name="confirm">Confirm</string>
@@ -139,5 +139,8 @@
     <string name="call">CALL</string>
     <string name="calculate">Calculate</string>
     <string name="select_weight">Select weight</string>
+    <string name="base_price">Price</string>
+    <string name="extra_charges">Extra Charges</string>
+    <string name="gst">GST(18%)</string>
 
 </resources>

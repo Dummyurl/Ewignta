@@ -1,58 +1,33 @@
 package ewingta.domesticlogistic.models;
 
 public class Weight {
-    private String service_id;
+    private String weight_key;
 
-    private String id;
+    private String weight_value;
 
-    private String title;
-
-    private String published;
-
-    public String getService_id ()
+    public String getWeight_key ()
     {
-        return service_id;
+        return weight_key;
     }
 
-    public void setService_id (String service_id)
+    public void setWeight_key (String weight_key)
     {
-        this.service_id = service_id;
+        this.weight_key = weight_key;
     }
 
-    public String getId ()
+    public String getWeight_value ()
     {
-        return id;
+        return weight_value;
     }
 
-    public void setId (String id)
+    public void setWeight_value (String weight_value)
     {
-        this.id = id;
-    }
-
-    public String getTitle ()
-    {
-        return title;
-    }
-
-    public void setTitle (String title)
-    {
-        this.title = title;
-    }
-
-    public String getPublished ()
-    {
-        return published;
-    }
-
-    public void setPublished (String published)
-    {
-        this.published = published;
+        this.weight_value = weight_value;
     }
 
     @Override
     public String toString()
     {
-        return "ClassPojo [service_id = "+service_id+", id = "+id+", title = "+title+", published = "+published+"]";
+        return "ClassPojo [weight_key = "+weight_key+", weight_value = "+weight_value+"]";
     }
-
 }

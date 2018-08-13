@@ -36,7 +36,7 @@ public class WeightAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return Long.parseLong(weights.get(position).getId());
+        return Long.parseLong(weights.get(position).getWeight_key());
     }
 
     @Override
@@ -62,7 +62,7 @@ public class WeightAdapter extends BaseAdapter {
         }
 
         if (value != null) {
-            valueVH.tv_title.setText(String.valueOf(value.getTitle()));
+            valueVH.tv_title.setText(String.valueOf(value.getWeight_key()));
         }
 
         return rowView;
