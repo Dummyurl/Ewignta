@@ -61,7 +61,7 @@
     <string name="delivery_type">Delivery Type</string>
     <string name="select_time">Select Time</string>
     <string name="ok">OK</string>
-    <string name="press_again_warn">Press again to exit Domestics Ewingta</string>
+    <string name="press_again_warn">Press again to exit Ewingta</string>
     <string name="select_city">Select City</string>
     <string name="select_area">Select Area</string>
     <string name="no_address_found">No address found</string>
@@ -137,5 +137,7 @@
     <string name="orderstatus">Status</string>
     <string name="view_details">View Details</string>
     <string name="call">CALL</string>
+    <string name="calculate">Calculate</string>
+    <string name="select_weight">Select weight</string>
 
 </resources>

@@ -7,6 +7,8 @@ public class PriceListResponse {
     private String status;
     private List<Price> pricelist;
 
+    private List<Weight> productweightlist;
+
     public String getStatus() {
         return status;
     }
@@ -26,6 +28,18 @@ public class PriceListResponse {
 
     public void setPricelist(List<Price> pricelist) {
         this.pricelist = pricelist;
+    }
+
+
+
+    public List<Weight> getProductweightlist ()
+    {
+        return productweightlist;
+    }
+
+    public void setProductweightlist (List<Weight> productweightlist)
+    {
+        this.productweightlist = productweightlist;
     }
 
     @Override

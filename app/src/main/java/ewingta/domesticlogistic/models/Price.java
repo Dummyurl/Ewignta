@@ -8,6 +8,16 @@ public class Price {
     private String service_name;
     private String published;
     private String price_value;
+    private String title;
+    public String getTitle ()
+    {
+        return title;
+    }
+
+    public void setTitle (String title)
+    {
+        this.title = title;
+    }
 
     public String getService_id() {
         return service_id;

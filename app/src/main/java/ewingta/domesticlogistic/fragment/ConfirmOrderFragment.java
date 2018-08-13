@@ -37,9 +37,11 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
     private static final String ORDER_ID = "ORDER_ID";
     private RelativeLayout rl_progress;
     private String orderId;
-    private AppCompatButton btn_submit;
-    private ProgressBar progress_submit;
-    private Spinner spinner_values, spinner_dimensions,spinner_weights;
+    private AppCompatButton btn_submit,btn_calculate;
+    private ProgressBar progress_submit,progress_calculate;
+    private Spinner spinner_values, spinner_dimensions, spinner_weights;
+    private RetrofitService service;
+    private TextView tv_price;
 
     public static ConfirmOrderFragment newInstance(String orderId) {
         ConfirmOrderFragment confirmOrderFragment = new ConfirmOrderFragment();
@@ -68,44 +70,22 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
         try {
             super.onViewCreated(view, savedInstanceState);
 
-            RetrofitService service = RetrofitInstance.createService(RetrofitService.class);
+           service = RetrofitInstance.createService(RetrofitService.class);
             rl_progress = view.findViewById(R.id.rl_progress);
             rl_progress.setVisibility(View.VISIBLE);
 
             btn_submit = view.findViewById(R.id.btn_submit);
             btn_submit.setOnClickListener(this);
+            btn_calculate = view.findViewById(R.id.btn_calculate);
+            btn_calculate.setOnClickListener(this);
             progress_submit = view.findViewById(R.id.progress_submit);
             spinner_values = view.findViewById(R.id.spinner_values);
             spinner_dimensions = view.findViewById(R.id.spinner_dimensions);
             spinner_weights = view.findViewById(R.id.spinner_weights);
 
-            final TextView tv_price = view.findViewById(R.id.tv_price);
+          tv_price = view.findViewById(R.id.tv_price);
 
-            service.getPrice(orderId).enqueue(new Callback<PriceResponse>() {
-                @Override
-                public void onResponse(Call<PriceResponse> call, Response<PriceResponse> response) {
-                    if (response.isSuccessful() && response.body() != null) {
-                        PriceResponse priceResponse = response.body();
 
-                        if (priceResponse.getStatus().equals("ok")) {
-                            tv_price.setText(priceResponse.getPrice());
-                        } else {
-                            showErrorToast(R.string.error_message);
-                        }
-
-                    } else {
-                        showErrorToast(R.string.error_message);
-                    }
-
-                    rl_progress.setVisibility(View.GONE);
-                }
-
-                @Override
-                public void onFailure(Call<PriceResponse> call, Throwable t) {
-                    rl_progress.setVisibility(View.GONE);
-                    showErrorToast(R.string.error_message);
-                }
-            });
 
             service.getValues().enqueue(new Callback<ValueResponse>() {
                 @Override
@@ -187,6 +167,46 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
                     mainActivity.showOrders();
                 }
                 break;
+
+            case R.id.btn_calculate:
+
+                Object weightItem = null;
+                if (spinner_weights.getSelectedItemPosition() > 0) {
+                    weightItem = spinner_weights.getSelectedItem();
+                }
+                else {
+                    weightItem = spinner_weights.getSelectedItem();
+
+                }
+                if (weightItem == null) {
+                    showErrorToast(R.string.select_weight);
+                }
+                service.getPrice(orderId).enqueue(new Callback<PriceResponse>() {
+                    @Override
+                    public void onResponse(Call<PriceResponse> call, Response<PriceResponse> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            PriceResponse priceResponse = response.body();
+
+                            if (priceResponse.getStatus().equals("ok")) {
+                                tv_price.setText(priceResponse.getPrice());
+                                spinner_weights.setSelection(0);
+                            } else {
+                                showErrorToast(R.string.error_message);
+                            }
+
+                        } else {
+                            showErrorToast(R.string.error_message);
+                        }
+
+                        rl_progress.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onFailure(Call<PriceResponse> call, Throwable t) {
+                        rl_progress.setVisibility(View.GONE);
+                        showErrorToast(R.string.error_message);
+                    }
+                });
         }
     }
 }

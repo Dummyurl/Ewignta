@@ -90,7 +90,8 @@ public interface RetrofitService {
                                           @Query("email") String email, @Query("mobile") String mobile, @Query("pass") String pass);
 
     @GET(URLsUtil.PRICE_URL)
-    Call<PriceResponse> getPrice(@Query("ordernumber") String ordernumber);
+    Call<PriceResponse> getPrice(@Query("ordernumber") String ordernumber
+                                 );
 
     @GET(URLsUtil.FORGOT_PASSWORD)
     Call<RequestResponse> forgotPassword(@Query("email") String email);

@@ -52,6 +52,10 @@ public class OrderDetailsFragment extends BottomSheetDialogFragment {
         TextView tv_order_type = contentView.findViewById(R.id.tv_order_type);
         TextView tv_customer_name = contentView.findViewById(R.id.tv_customer_name);
         TextView tv_customer_phone = contentView.findViewById(R.id.tv_customer_phone);
+        TextView tv_customer_name_pickup = contentView.findViewById(R.id.tv_customer_name_pickup);
+        TextView tv_customer_pickup_phone = contentView.findViewById(R.id.tv_customer_pickup_phone);
+        TextView tv_customer_name_drop = contentView.findViewById(R.id.tv_customer_name_drop);
+        TextView tv_customer_drop_phone = contentView.findViewById(R.id.tv_customer_drop_phone);
         TextView tv_pick_up = contentView.findViewById(R.id.tv_pick_up);
         TextView tv_delivery = contentView.findViewById(R.id.tv_delivery);
         TextView tv_order_size = contentView.findViewById(R.id.tv_order_size);
@@ -61,13 +65,17 @@ public class OrderDetailsFragment extends BottomSheetDialogFragment {
 
 
         tv_order_type.setText(order.getTime());
-        tv_customer_name.setText(order.getCustomer_name());
-        tv_customer_phone.setText(order.getCustomer_phone());
+        tv_customer_name.setText(order.getDrivername());
+        tv_customer_phone.setText(order.getDrivermobilenumber());
         tv_pick_up.setText(order.getCustomer_address());
         tv_delivery.setText(order.getLocation_id());
         tv_order_size.setText(order.getCat_name());
         tv_order_price.setText(order.getOrder_price());
         tv_order_status.setText(order.getStatus());
+        tv_customer_name_pickup.setText(order.getCustomer_name());
+        tv_customer_pickup_phone.setText(order.getCustomer_phone());
+        tv_customer_name_drop.setText(order.getDrop_name());
+        tv_customer_drop_phone.setText(order.getDrop_phone());
 
         dialog.setContentView(contentView);
 
