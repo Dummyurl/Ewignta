@@ -1,5 +1,6 @@
 package ewingta.domesticlogistic.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ewingta.domesticlogistic.R;
+import ewingta.domesticlogistic.models.Category;
 import ewingta.domesticlogistic.models.Weight;
 
 public class WeightAdapter extends BaseAdapter {
@@ -19,6 +21,10 @@ public class WeightAdapter extends BaseAdapter {
     private Context context;
 
     public WeightAdapter(Context context, List<Weight> weight) {
+        Weight weight1 = new Weight();
+        weight1.setCat_name(context.getString(R.string.what_do_you_want_to_deliver));
+        weight1.setPublished(context.getString(R.string.what_do_you_want_to_deliver));
+        weight1.setId(0);
         this.weights = new ArrayList<>();
         this.weights.addAll(weight);
         this.context = context;
@@ -39,6 +45,7 @@ public class WeightAdapter extends BaseAdapter {
         return Long.parseLong(weights.get(position).getWeight_key());
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 

@@ -1,7 +1,5 @@
 package ewingta.domesticlogistic.models;
 
-import java.util.List;
-
 public class PriceResponse {
     private String price;
     private String status;

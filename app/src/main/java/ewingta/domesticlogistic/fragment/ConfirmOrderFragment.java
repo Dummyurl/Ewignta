@@ -22,6 +22,7 @@ import ewingta.domesticlogistic.adapter.ValueAdapter;
 import ewingta.domesticlogistic.adapter.WeightAdapter;
 import ewingta.domesticlogistic.models.DimensionResponse;
 import ewingta.domesticlogistic.models.PriceResponse;
+import ewingta.domesticlogistic.models.Service;
 import ewingta.domesticlogistic.models.ServiceResponse;
 import ewingta.domesticlogistic.models.Value;
 import ewingta.domesticlogistic.models.ValueResponse;
@@ -40,10 +41,10 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
     private String orderId;
     private AppCompatButton btn_submit,btn_calculate;
     private ProgressBar progress_submit,progress_calculate;
-    private Spinner spinner_values, spinner_dimensions ;
+    private Spinner spinner_values, spinner_dimensions,spinner_weights ;
     private RetrofitService service;
     private TextView tv_price,tv_baseprice,tv_extra_charges,tv_gst;
-    private EditText spinner_weights;
+
 
     public static ConfirmOrderFragment newInstance(String orderId) {
         ConfirmOrderFragment confirmOrderFragment = new ConfirmOrderFragment();
@@ -143,7 +144,7 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
 
                         if (weightResponse.getStatus().equals("ok")) {
                             WeightAdapter weightAdapter = new WeightAdapter(getContext(), weightResponse.getProductweightlist());
-                            spinner_weights.setText((CharSequence) weightAdapter);
+                            spinner_weights.setAdapter(weightAdapter);
                         }
                     }
 
@@ -175,13 +176,17 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
 
             case R.id.btn_calculate:
 
-                final String weight = spinner_weights.getText().toString().trim();
 
-                if (spinner_weights == null) {
-                    showErrorToast(R.string.select_what_do_you_want_to_deliver);
+                Object weight = null;
+                if (spinner_weights.getSelectedItemPosition() > 0) {
+                    weight = spinner_weights.getSelectedItem();
+                }
+                if (weight == null) {
+                    showErrorToast(R.string.select_weight);
                 }
                 else {
-                    service.getPrice(orderId, weight).enqueue(new Callback<PriceResponse>() {
+                    final Weight weight1 = (Weight) weight;
+                    service.getPrice(orderId, weight1.getWeight_key()).enqueue(new Callback<PriceResponse>() {
                         @Override
                         public void onResponse(Call<PriceResponse> call, Response<PriceResponse> response) {
                             if (response.isSuccessful() && response.body() != null) {
@@ -192,14 +197,14 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
                                     tv_baseprice.setText(priceResponse.getBaseprice());
                                     tv_extra_charges.setText(priceResponse.getExtraweightCharges());
                                     tv_gst.setText(priceResponse.getGst());
-                                    spinner_weights.setText("");
+                                    spinner_weights.setSelection(0);
 
                                 } else {
                                     showErrorToast(R.string.error_message);
                                 }
 
                             } else {
-                                spinner_weights.setText("-");
+
                             }
 
                             rl_progress.setVisibility(View.GONE);
