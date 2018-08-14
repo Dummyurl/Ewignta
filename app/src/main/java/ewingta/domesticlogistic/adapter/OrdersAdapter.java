@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import ewingta.domesticlogistic.R;
 import ewingta.domesticlogistic.activities.OrderActivity;
 import ewingta.domesticlogistic.models.Order;
+import ewingta.domesticlogistic.models.PdfResponse;
 
 public class OrdersAdapter extends CommonRecyclerAdapter<Order> {
     private Context context;
@@ -36,7 +37,7 @@ public class OrdersAdapter extends CommonRecyclerAdapter<Order> {
 
     private class OrderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private TextView tv_order_id, tv_order_type, tv_customer_name, tv_customer_phone, tv_status, tv_detail;
+        private TextView tv_order_id, tv_order_type, tv_customer_name, tv_customer_phone, tv_status, tv_detail,tv_pdf;
 
         private OrderViewHolder(View view) {
             super(view);
@@ -47,17 +48,20 @@ public class OrdersAdapter extends CommonRecyclerAdapter<Order> {
             tv_status = view.findViewById(R.id.tv_status);
             tv_detail = view.findViewById(R.id.tv_detail);
             tv_detail.setOnClickListener(this);
+            tv_pdf.setOnClickListener(this);
         }
 
 
         private void bindData(int position) {
             Order order = getItem(position);
 
+
             tv_order_id.setText(String.format("#%s", order.getOrder_num()));
             tv_status.setText(order.getStatus());
             tv_customer_name.setText(order.getCustomer_name());
             tv_customer_phone.setText(order.getCustomer_phone());
             tv_order_type.setText(order.getTime());
+
         }
 
         @Override

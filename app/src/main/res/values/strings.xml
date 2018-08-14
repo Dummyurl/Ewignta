@@ -143,5 +143,6 @@
     <string name="extra_charges">Extra Charges</string>
     <string name="gst">GST(18%)</string>
     <string name="select_the_weight">Select Weight</string>
+    <string name="invoice">Invoice</string>
 
 </resources>
