@@ -21,10 +21,7 @@ public class WeightAdapter extends BaseAdapter {
     private Context context;
 
     public WeightAdapter(Context context, List<Weight> weight) {
-        Weight weight1 = new Weight();
-        weight1.setCat_name(context.getString(R.string.what_do_you_want_to_deliver));
-        weight1.setPublished(context.getString(R.string.what_do_you_want_to_deliver));
-        weight1.setId(0);
+
         this.weights = new ArrayList<>();
         this.weights.addAll(weight);
         this.context = context;

@@ -1,6 +1,8 @@
 package ewingta.domesticlogistic.reterofit;
 
 
+import android.widget.RadioButton;
+
 import ewingta.domesticlogistic.models.AddAddressResponse;
 import ewingta.domesticlogistic.models.AddressResponse;
 import ewingta.domesticlogistic.models.AreaResponse;
@@ -21,6 +23,7 @@ import ewingta.domesticlogistic.models.WeightResponse;
 import ewingta.domesticlogistic.utils.URLsUtil;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface RetrofitService {
@@ -100,4 +103,6 @@ public interface RetrofitService {
 
     @GET(URLsUtil.DELETE_ADDRESS)
     Call<RequestResponse> deleteAddress(@Query("userid") String userid, @Query("addrid") String addrid);
+
+
 }

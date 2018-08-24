@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -44,6 +45,7 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
     private Spinner spinner_values, spinner_dimensions,spinner_weights ;
     private RetrofitService service;
     private TextView tv_price,tv_baseprice,tv_extra_charges,tv_gst;
+    private RadioButton rb_cash_delviery;
 
 
     public static ConfirmOrderFragment newInstance(String orderId) {
@@ -79,9 +81,13 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
 
             btn_submit = view.findViewById(R.id.btn_submit);
             btn_submit.setOnClickListener(this);
+            btn_submit.setVisibility(View.GONE);
             btn_calculate = view.findViewById(R.id.btn_calculate);
             btn_calculate.setOnClickListener(this);
             progress_submit = view.findViewById(R.id.progress_submit);
+            progress_submit.setVisibility(View.GONE);
+            progress_calculate = view.findViewById(R.id.progress_calculate);
+            progress_calculate.setVisibility(View.GONE);
             spinner_values = view.findViewById(R.id.spinner_values);
             spinner_dimensions = view.findViewById(R.id.spinner_dimensions);
             spinner_weights = view.findViewById(R.id.spinner_weights);
@@ -90,6 +96,7 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
             tv_baseprice = view.findViewById(R.id.tv_baseprice);
             tv_extra_charges = view.findViewById(R.id.tv_extra_charges);
             tv_gst = view.findViewById(R.id.tv_gst);
+            rb_cash_delviery = view.findViewById(R.id.rb_cash_delviery);
 
 
 
@@ -178,7 +185,8 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
 
 
                 Object weight = null;
-                if (spinner_weights.getSelectedItemPosition() > 0) {
+
+                if (spinner_weights.getSelectedItemPosition() > -1) {
                     weight = spinner_weights.getSelectedItem();
                 }
                 if (weight == null) {
@@ -198,13 +206,23 @@ public class ConfirmOrderFragment extends BaseFragment implements View.OnClickLi
                                     tv_extra_charges.setText(priceResponse.getExtraweightCharges());
                                     tv_gst.setText(priceResponse.getGst());
                                     spinner_weights.setSelection(0);
+                                    rb_cash_delviery.setSelected(true);
+                                    btn_submit.setVisibility(View.VISIBLE);
+                                    progress_submit.setVisibility(View.VISIBLE);
+                                    btn_calculate.setVisibility(View.GONE);
+                                    progress_calculate.setVisibility(View.GONE);
+
 
                                 } else {
                                     showErrorToast(R.string.error_message);
+                                    btn_calculate.setVisibility(View.VISIBLE);
+                                    progress_calculate.setVisibility(View.VISIBLE);
                                 }
 
-                            } else {
 
+
+                            } else {
+                                showErrorToast(R.string.error_message);
                             }
 
                             rl_progress.setVisibility(View.GONE);

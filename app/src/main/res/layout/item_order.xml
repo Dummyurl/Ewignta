@@ -75,10 +75,9 @@
 
     <TextView
         android:id="@+id/tv_pdf"
-        android:layout_width="110dp"
+        android:layout_width="81dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/ic_rectangle"
         android:ellipsize="end"
@@ -86,12 +85,14 @@
         android:maxLines="1"
         android:paddingBottom="@dimen/margin4dp"
         android:paddingLeft="@dimen/margin16dp"
-        android:paddingRight="@dimen/margin16dp"
+        android:paddingRight="@dimen/margin4dp"
         android:paddingTop="@dimen/margin4dp"
         android:text="@string/invoice"
         android:textColor="@android:color/black"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_alignParentRight="true" />
 </RelativeLayout>
+
 
 
     <RelativeLayout
